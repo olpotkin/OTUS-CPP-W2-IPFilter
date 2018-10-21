@@ -18,8 +18,8 @@ int main(int argc, char const *argv[])
     // 1.29.168.152
     // 1.1.234.8
 
-    // TODO filter by first byte and output
-    // ip = filter(1)
+    // Filter by first byte and output
+    Print(filter(ip_pool, 1));
 
     // 1.231.69.33
     // 1.87.203.225
@@ -27,16 +27,17 @@ int main(int argc, char const *argv[])
     // 1.29.168.152
     // 1.1.234.8
 
-    // TODO filter by first and second bytes and output
-    // ip = filter(46, 70)
+    // Filter by first and second bytes and output
+    Print(filter(ip_pool, 46, 70));
 
     // 46.70.225.39
     // 46.70.147.26
     // 46.70.113.73
     // 46.70.29.76
 
-    // TODO filter by any byte and output
+    // Filter by any byte and output
     // ip = filter_any(46)
+    Print(filter_any(ip_pool, 46));
 
     // 186.204.34.46
     // 186.46.222.194

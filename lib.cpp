@@ -85,7 +85,7 @@ void Sort(std::vector<std::vector<std::string>> &ip_pool)
   }
 }
 
-void Print(std::vector<std::vector<std::string>> const &ip_pool)
+void Print(const std::vector<std::vector<std::string>> &ip_pool)
 {
   for (const auto &ip : ip_pool)
   {
@@ -101,3 +101,58 @@ void Print(std::vector<std::vector<std::string>> const &ip_pool)
   }
 }
 
+// Filter by first byte
+std::vector<std::vector<std::string>> filter(
+  const std::vector<std::vector<std::string>> &ip_pool,
+  const uint &first_byte)
+{
+  std::vector<std::vector<std::string>> pool_filtered;
+
+  for (const auto &ip : ip_pool)
+  {
+    if (std::stoi(ip[0]) == first_byte)
+    {
+      pool_filtered.push_back(ip);
+    }
+  }
+  return pool_filtered;
+}
+
+// Filter by first and second bytes
+std::vector<std::vector<std::string>> filter(
+  const std::vector<std::vector<std::string>> &ip_pool,
+  const uint &first_byte,
+  const uint &second_byte)
+{
+  std::vector<std::vector<std::string>> pool_filtered;
+
+  for (const auto &ip : ip_pool)
+  {
+    if (std::stoi(ip[0]) == first_byte
+        && std::stoi(ip[1]) == second_byte)
+    {
+      pool_filtered.push_back(ip);
+    }
+  }
+  return pool_filtered;
+}
+
+std::vector<std::vector<std::string>> filter_any(
+  const std::vector<std::vector<std::string>> &ip_pool,
+  const uint &any_byte)
+{
+  std::vector<std::vector<std::string>> pool_filtered;
+
+  for (const auto &ip : ip_pool)
+  {
+    for (const auto &ip_part : ip)
+    {
+      if (std::stoi(ip_part) == any_byte)
+      {
+        pool_filtered.push_back(ip);
+        break; // exit from this loop
+      }
+    }
+  }
+  return pool_filtered;
+}
