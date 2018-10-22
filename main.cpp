@@ -5,6 +5,10 @@ int main(int argc, char const *argv[])
 {
   try
   {
+    // For debugging purposes
+    //std::ifstream in("ip_filter.tsv");
+    //std::cin.rdbuf(in.rdbuf());
+
     std::vector<std::vector<std::string>> ip_pool;
     ip_pool = ReadData();
     Sort(ip_pool);
