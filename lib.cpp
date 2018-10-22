@@ -1,10 +1,12 @@
 #include "lib.h"
 #include "version.h"
 
+
 int version()
 {
   return PROJECT_VERSION_PATCH;
 }
+
 
 // ("",  '.') -> [""]
 // ("11", '.') -> ["11"]
@@ -31,26 +33,6 @@ std::vector<std::string> split(const std::string &str, char d)
   return r;
 }
 
-std::vector<std::vector<std::string>> ReadData()
-{
-  try
-  {
-    std::vector<std::vector<std::string>> ip_pool; // 2d vector: L1 index -> L2 ip address octets
-
-    // Reading from the file line by line
-    for (std::string line; std::getline(std::cin, line);)
-    {
-      // Parsing an input string from the file
-      std::vector<std::string> v = split(line, '\t');
-      ip_pool.push_back(split(v.at(0), '.'));
-    }
-    return ip_pool;
-  }
-  catch(const std::exception &e)
-  {
-    std::cerr << e.what() << std::endl;
-  }
-}
 
 void Sort(std::vector<std::vector<std::string>> &ip_pool)
 {
@@ -76,6 +58,7 @@ void Sort(std::vector<std::vector<std::string>> &ip_pool)
   }
 }
 
+
 void Print(const std::vector<std::vector<std::string>> &ip_pool)
 {
   for (const auto &ip : ip_pool)
@@ -91,6 +74,7 @@ void Print(const std::vector<std::vector<std::string>> &ip_pool)
     std::cout << std::endl;
   }
 }
+
 
 // Filter by first byte
 std::vector<std::vector<std::string>> filter(
@@ -108,6 +92,7 @@ std::vector<std::vector<std::string>> filter(
   }
   return pool_filtered;
 }
+
 
 // Filter by first and second bytes
 std::vector<std::vector<std::string>> filter(
@@ -127,6 +112,7 @@ std::vector<std::vector<std::string>> filter(
   }
   return pool_filtered;
 }
+
 
 std::vector<std::vector<std::string>> filter_any(
   const std::vector<std::vector<std::string>> &ip_pool,

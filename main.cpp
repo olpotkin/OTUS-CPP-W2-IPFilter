@@ -10,7 +10,13 @@ int main(int argc, char const *argv[])
     //std::cin.rdbuf(in.rdbuf());
 
     std::vector<std::vector<std::string>> ip_pool;
-    ip_pool = ReadData();
+
+    for(std::string line; std::getline(std::cin, line);)
+    {
+      std::vector<std::string> v = split(line, '\t');
+      ip_pool.push_back(split(v.at(0), '.'));
+    }
+
     Sort(ip_pool);
     Print(ip_pool);
 
