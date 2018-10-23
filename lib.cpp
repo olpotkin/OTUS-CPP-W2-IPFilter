@@ -46,12 +46,12 @@ void Sort(std::vector<std::vector<std::string>> &ip_pool)
       {
         if (std::stoi(ip_pool[j][octet]) != std::stoi(ip_pool[j + 1][octet]))
         {
+          if (std::stoi(ip_pool[j][octet]) < std::stoi(ip_pool[j + 1][octet]))
+          {
+            std::swap(ip_pool[j], ip_pool[j + 1]);
+          }
           break;
         }
-      }
-      if (std::stoi(ip_pool[j][octet]) < std::stoi(ip_pool[j + 1][octet]))
-      {
-        std::swap(ip_pool[j], ip_pool[j + 1]);
       }
     }
   }
