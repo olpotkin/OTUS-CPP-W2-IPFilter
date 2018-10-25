@@ -6,6 +6,7 @@
 #include <string>
 #include <cassert>
 #include <cstdlib>
+#include <algorithm>
 
 
 int version();

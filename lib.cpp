@@ -33,28 +33,31 @@ std::vector<std::string> split(const std::string &str, char d)
 }
 
 
+// Custom comparator
+bool comp (const std::vector<std::string> &lhs,
+           const std::vector<std::string> &rhs)
+{
+  // Check which octect is not equal for 2 ip-addresses
+  auto octet = 0;
+  for (octet; octet < lhs.size(); ++octet)
+  {
+    if (std::stoi(lhs[octet]) != std::stoi(rhs[octet]))
+    {
+      if (std::stoi(lhs[octet]) > std::stoi(rhs[octet]))
+      {
+        return true;
+      }
+      break;
+    }
+  }
+  return false;
+}
+
+
 void Sort(std::vector<std::vector<std::string>> &ip_pool)
 {
   // Reverse lexicographically sort
-  for (auto i = 1; i < ip_pool.size(); ++i)
-  {
-    for (auto j = 0; j < ip_pool.size() - i; ++j)
-    {
-      // Check which octect is not equal for 2 ip-addresses
-      auto octet = 0;
-      for (octet; octet < ip_pool[0].size(); ++octet)
-      {
-        if (std::stoi(ip_pool[j][octet]) != std::stoi(ip_pool[j + 1][octet]))
-        {
-          if (std::stoi(ip_pool[j][octet]) < std::stoi(ip_pool[j + 1][octet]))
-          {
-            std::swap(ip_pool[j], ip_pool[j + 1]);
-          }
-          break;
-        }
-      }
-    }
-  }
+  std::sort(ip_pool.begin(), ip_pool.end(), comp);
 }
 
 
