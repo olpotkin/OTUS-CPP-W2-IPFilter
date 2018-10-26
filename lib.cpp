@@ -41,9 +41,10 @@ bool comp (const std::vector<std::string> &lhs,
   auto octet = 0;
   for (octet; octet < lhs.size(); ++octet)
   {
-    if (std::stoi(lhs[octet]) != std::stoi(rhs[octet]))
+    if (lhs[octet] != rhs[octet])
     {
-      if (std::stoi(lhs[octet]) > std::stoi(rhs[octet]))
+      if ((lhs[octet].length() > rhs[octet].length()) ||
+          (lhs[octet].length() == rhs[octet].length() && lhs[octet] > rhs[octet]))
       {
         return true;
       }
