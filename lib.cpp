@@ -45,37 +45,37 @@ std::vector<int> strToInt(const std::vector<std::string> &ip)
 
 
 // Custom comparator
-bool comp (const std::vector<std::string> &lhs,
-           const std::vector<std::string> &rhs)
-{
-  // Check which octect is not equal for 2 ip-addresses
-  auto octet = 0;
-  for (octet; octet < lhs.size(); ++octet)
-  {
-    // In case if octets are not equal
-    if (lhs[octet] != rhs[octet])
-    {
-      // String comparison (numerical):
-      // - If length of the first string greater than second -> value of first string is greater
-      // - If lengths of strings are equal -> compare values
-      if ((lhs[octet].length() > rhs[octet].length()) ||
-          (lhs[octet].length() == rhs[octet].length() && lhs[octet] > rhs[octet]))
-      {
-        // lhs is greater than rhs
-        return true;
-      }
-      break;
-    }
-  }
-  // rhs is greater than lhs
-  return false;
-}
+//bool comp (const std::vector<std::string> &lhs,
+//           const std::vector<std::string> &rhs)
+//{
+//  // Check which octect is not equal for 2 ip-addresses
+//  auto octet = 0;
+//  for (octet; octet < lhs.size(); ++octet)
+//  {
+//    // In case if octets are not equal
+//    if (lhs[octet] != rhs[octet])
+//    {
+//      // String comparison (numerical):
+//      // - If length of the first string greater than second -> value of first string is greater
+//      // - If lengths of strings are equal -> compare values
+//      if ((lhs[octet].length() > rhs[octet].length()) ||
+//          (lhs[octet].length() == rhs[octet].length() && lhs[octet] > rhs[octet]))
+//      {
+//        // lhs is greater than rhs
+//        return true;
+//      }
+//      break;
+//    }
+//  }
+//  // rhs is greater than lhs
+//  return false;
+//}
 
 
 void Sort(std::vector<std::vector<int>> &ip_pool)
 {
   // Reverse lexicographically sort
-  //std::sort(ip_pool.begin(), ip_pool.end(), comp);
+//  std::sort(ip_pool.begin(), ip_pool.end(), comp);
   std::sort(ip_pool.begin(), ip_pool.end(), std::greater<>());
 }
 

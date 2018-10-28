@@ -24,8 +24,6 @@ std::vector<std::vector<int>> filter_any(
 
 
 std::vector<std::string> split(const std::string &str, char d);
-
-
 std::vector<int> strToInt(const std::vector<std::string> &ip);
 
 
