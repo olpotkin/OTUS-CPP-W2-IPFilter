@@ -33,6 +33,17 @@ std::vector<std::string> split(const std::string &str, char d)
 }
 
 
+std::vector<int> strToInt(const std::vector<std::string> &ip)
+{
+  std::vector<int> out;
+  for (auto octet : ip)
+  {
+    out.push_back(std::stoi(octet));
+  }
+  return out;
+}
+
+
 // Custom comparator
 bool comp (const std::vector<std::string> &lhs,
            const std::vector<std::string> &rhs)
@@ -61,14 +72,15 @@ bool comp (const std::vector<std::string> &lhs,
 }
 
 
-void Sort(std::vector<std::vector<std::string>> &ip_pool)
+void Sort(std::vector<std::vector<int>> &ip_pool)
 {
   // Reverse lexicographically sort
-  std::sort(ip_pool.begin(), ip_pool.end(), comp);
+  //std::sort(ip_pool.begin(), ip_pool.end(), comp);
+  std::sort(ip_pool.begin(), ip_pool.end(), std::greater<>());
 }
 
 
-void Print(const std::vector<std::vector<std::string>> &ip_pool)
+void Print(const std::vector<std::vector<int>> &ip_pool)
 {
   for (const auto &ip : ip_pool)
   {
@@ -85,19 +97,19 @@ void Print(const std::vector<std::vector<std::string>> &ip_pool)
 }
 
 
-std::vector<std::vector<std::string>> filter_any(
-  const std::vector<std::vector<std::string>> &ip_pool,
+std::vector<std::vector<int>> filter_any(
+  const std::vector<std::vector<int>> &ip_pool,
   const int &any_byte)
 {
-  std::vector<std::vector<std::string>> pool_filtered;
+  std::vector<std::vector<int>> pool_filtered;
 
   for (const auto &ip : ip_pool)
   {
     // Use stl algorithm std::any_of() with lambda function
     if (std::any_of(ip.begin(),
                     ip.end(),
-                    [&any_byte](const std::string & str) {
-                      return std::stoi(str) == any_byte;
+                    [&any_byte](const int & octet) {
+                      return octet == any_byte;
                     }))
     {
       pool_filtered.push_back(ip);

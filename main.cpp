@@ -9,12 +9,12 @@ int main(int argc, char const *argv[])
     //std::ifstream in("ip_filter.tsv");
     //std::cin.rdbuf(in.rdbuf());
 
-    std::vector<std::vector<std::string>> ip_pool;
+    std::vector<std::vector<int>> ip_pool;
 
     for(std::string line; std::getline(std::cin, line);)
     {
       std::vector<std::string> v = split(line, '\t');
-      ip_pool.push_back(split(v.at(0), '.'));
+      ip_pool.push_back(strToInt(split(v.at(0), '.')));
     }
 
     Sort(ip_pool);
