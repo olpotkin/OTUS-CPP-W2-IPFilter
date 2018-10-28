@@ -41,16 +41,22 @@ bool comp (const std::vector<std::string> &lhs,
   auto octet = 0;
   for (octet; octet < lhs.size(); ++octet)
   {
+    // In case if octets are not equal
     if (lhs[octet] != rhs[octet])
     {
+      // String comparison (numerical):
+      // - If length of the first string greater than second -> value of first string is greater
+      // - If lengths of strings are equal -> compare values
       if ((lhs[octet].length() > rhs[octet].length()) ||
           (lhs[octet].length() == rhs[octet].length() && lhs[octet] > rhs[octet]))
       {
+        // lhs is greater than rhs
         return true;
       }
       break;
     }
   }
+  // rhs is greater than lhs
   return false;
 }
 
@@ -79,47 +85,9 @@ void Print(const std::vector<std::vector<std::string>> &ip_pool)
 }
 
 
-// Filter by first byte
-std::vector<std::vector<std::string>> filter(
-  const std::vector<std::vector<std::string>> &ip_pool,
-  const uint &first_byte)
-{
-  std::vector<std::vector<std::string>> pool_filtered;
-
-  for (const auto &ip : ip_pool)
-  {
-    if (std::stoi(ip[0]) == first_byte)
-    {
-      pool_filtered.push_back(ip);
-    }
-  }
-  return pool_filtered;
-}
-
-
-// Filter by first and second bytes
-std::vector<std::vector<std::string>> filter(
-  const std::vector<std::vector<std::string>> &ip_pool,
-  const uint &first_byte,
-  const uint &second_byte)
-{
-  std::vector<std::vector<std::string>> pool_filtered;
-
-  for (const auto &ip : ip_pool)
-  {
-    if (std::stoi(ip[0]) == first_byte
-        && std::stoi(ip[1]) == second_byte)
-    {
-      pool_filtered.push_back(ip);
-    }
-  }
-  return pool_filtered;
-}
-
-
 std::vector<std::vector<std::string>> filter_any(
   const std::vector<std::vector<std::string>> &ip_pool,
-  const uint &any_byte)
+  const int &any_byte)
 {
   std::vector<std::vector<std::string>> pool_filtered;
 
