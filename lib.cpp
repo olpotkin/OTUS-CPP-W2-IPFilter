@@ -76,7 +76,7 @@ void Sort(std::vector<std::vector<int>> &ip_pool)
 {
   // Reverse lexicographically sort
 //  std::sort(ip_pool.begin(), ip_pool.end(), comp);
-  std::sort(ip_pool.begin(), ip_pool.end(), std::greater<>());
+  std::sort(ip_pool.begin(), ip_pool.end(), std::greater<std::vector<int>>());
 }
 
 
