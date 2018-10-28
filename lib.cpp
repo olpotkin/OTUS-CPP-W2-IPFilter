@@ -93,13 +93,14 @@ std::vector<std::vector<std::string>> filter_any(
 
   for (const auto &ip : ip_pool)
   {
-    for (const auto &ip_part : ip)
+    // Use stl algorithm std::any_of() with lambda function
+    if (std::any_of(ip.begin(),
+                    ip.end(),
+                    [&any_byte](const std::string & str) {
+                      return std::stoi(str) == any_byte;
+                    }))
     {
-      if (std::stoi(ip_part) == any_byte)
-      {
-        pool_filtered.push_back(ip);
-        break; // exit from this loop
-      }
+      pool_filtered.push_back(ip);
     }
   }
   return pool_filtered;
