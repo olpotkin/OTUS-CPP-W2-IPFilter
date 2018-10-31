@@ -1,7 +1,7 @@
 #include "lib.h"
 
 
-int main(int argc, char const *argv[])
+int main()
 {
   try
   {

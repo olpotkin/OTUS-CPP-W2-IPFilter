@@ -40,7 +40,7 @@ std::vector<std::vector<int>> filter_pack(
   for (const auto &ip : ip_pool)
   {
     bool flag = true;
-    for (auto i = 0; i < p.size(); ++i)
+    for (size_t i = 0; i < p.size(); ++i)
     {
       if (ip[i] != p[i])
       {
